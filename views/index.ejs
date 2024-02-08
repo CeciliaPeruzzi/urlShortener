@@ -6,16 +6,21 @@
     <link rel="stylesheet" href="style.css">
     <title>Url shortner</title>
 </head>
+<header>
+    <div class="header-title">
+        <h1>URLs Shortner</h1>
+    </div>
+</header>
 <body>
-    <h1>URL SHORTNER</h1>
-
+    
     <% if (locals.error) { %>
      <p class="error"><%= error %></p>
     <% } %>
 
     <form action="/" method="post">
-        <input type="url" name="url" id="url" placeholder="url here"/>
-        <input type="submit" value="create url"/>
+        <p> Paste the URL to be shortned </p>
+        <input type="url" name="url" id="url" placeholder=""/>
+        <input type="submit" value="Create url"/>
     </form>
 
     <div class="short-url">
