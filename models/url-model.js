@@ -1,20 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const ShortUrlSchema = new Schema({
-    url: {
-        type: String,
-        required: true,
-
-    },
-    shortId: {
-        type: String,
-        required: true,
-    }
+  url: {
+    type: String,
+    required: true,
+  },
+  shortId: {
+    type: String,
+    required: true,
+  },
 })
 
 const ShortUrl = mongoose.model('shortUrl', ShortUrlSchema)
 
 module.exports = ShortUrl
-
-/*31:16*/
