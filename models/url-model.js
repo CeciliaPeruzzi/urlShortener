@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const ShortUrlSchema = new Schema({
     url: {
@@ -16,3 +16,5 @@ const ShortUrlSchema = new Schema({
 const ShortUrl = mongoose.model('shortUrl', ShortUrlSchema)
 
 module.exports = ShortUrl
+
+/*31:16*/

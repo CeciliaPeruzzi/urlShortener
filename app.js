@@ -47,6 +47,20 @@ app.post('/', async (req, res, next) => {
     }
 })
 
+app.get('/:shortId', async (req, res, next) => {
+    try {
+    const { shortId } = req.params
+    const result = await ShortUrl.findOne({ shortId })
+    if (!result) {
+        throw createHttpError.NotFound('Short url does not exist')
+    } 
+    res.redirect(result.url)  
+    } catch (error) {
+        next(error)
+    }
+      
+})
+
 app.use((req, res, next) => {
     next(createHttpError.NotFound())
 })
