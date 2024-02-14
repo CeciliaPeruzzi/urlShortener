@@ -12,6 +12,6 @@ const ShortUrlSchema = new Schema({
   },
 })
 
-const ShortUrl = mongoose.model('shortUrl', ShortUrlSchema)
+const ShortUrl = mongoose.model('url-shortener', ShortUrlSchema)
 
 module.exports = ShortUrl

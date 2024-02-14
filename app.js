@@ -3,7 +3,7 @@ const shortId = require('shortid');
 const createHttpError = require('http-errors');
 const mongoose = require('mongoose');
 const path = require('path')
-const ShortUrl = require('./models/url-model');
+const ShortUrl = require('./models/url-shortener');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')))
@@ -11,13 +11,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false}))
 
 
-mongoose.connect('mongodb://localhost:27017', {
-    dbName: 'url-shortner',
-    userNewUrlParser: true,
+
+mongoose.connect('mongodb+srv://ceciliaperuzzi10:YJABJxem6CbxGD7D@cluster0.ppnlrnr.mongodb.net/?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
-}).then(()=> console.log('mongoose connected'))
-.catch((error) => console.log('Error connecting..'))
+})
+.then(() => console.log('mongoose connected'))
+.catch((error) => console.log('Error connecting', error));
 
 
 app.set('view engine', 'ejs')
@@ -34,7 +34,7 @@ app.post('/', async (req, res, next) => {
         }
         const urlExist = await ShortUrl.findOne({ url })
         if (urlExist) {
-            res.render('index', {short_irl: `http://localhost:3000/${urlExist.shortId}`})
+            res.render('index', {short_url: `http://localhost:3000/${urlExist.shortId}`})
             return 
         }
 
